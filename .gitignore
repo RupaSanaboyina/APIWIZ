@@ -1,9 +1,11 @@
-# Runtime env
+
 .env
 .env.*.local
 .env.local
+node_modules/
 
-# Build / output folders
+
+
 dist
 build
 .out
@@ -15,7 +17,7 @@ build
 coverage
 .nyc_output
 
-# Tooling / editor / OS
+
 .DS_Store
 Thumbs.db
 *.log
@@ -36,12 +38,12 @@ pnpm-debug.log*
 *.sln
 *.sw?
 
-# Test / cache / profiling
+
 coverage/
 jest-cache/
 .cache/
 *.tgz
 
-# Misc
+
 local.properties
 client-secret.json

@@ -42,15 +42,15 @@ function Tree({ nodes, edges, highlightNode, onNodeCopy }) {
     [edges]
   );
 
-  // Pan/center to highlighted node when it changes
+ 
   useEffect(() => {
     if (!highlightNode || !rfInstance) return;
     const node = nodes.find((n) => n.id === highlightNode);
     if (!node) return;
     try {
-      // try setCenter (v9/api may differ) then fallback to panTo
+  
       if (typeof rfInstance.setCenter === "function") {
-        // setCenter(x, y, zoom) - try with node coords
+        
         rfInstance.setCenter(node.position.x, node.position.y, 1.2);
       } else if (typeof rfInstance.panTo === "function") {
         rfInstance.panTo({ x: node.position.x, y: node.position.y });
@@ -59,7 +59,7 @@ function Tree({ nodes, edges, highlightNode, onNodeCopy }) {
       try {
         rfInstance.panTo && rfInstance.panTo({ x: node.position.x, y: node.position.y });
       } catch (e) {
-        // ignore
+      
       }
     }
   }, [highlightNode, rfInstance, nodes]);
@@ -99,7 +99,6 @@ function Tree({ nodes, edges, highlightNode, onNodeCopy }) {
         <Background />
       </ReactFlow>
 
-      {/* tooltip */}
       {tooltip.visible && tooltip.node && (
         <div
           className="node-tooltip"

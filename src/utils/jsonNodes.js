@@ -9,14 +9,14 @@ export const jsonNodes = (data) => {
   const getX = (depth) => {
     if (!levelWidth[depth]) levelWidth[depth] = 0;
     const x = levelWidth[depth];
-    levelWidth[depth] += 200; // horizontal spacing
+    levelWidth[depth] += 200; 
     return x;
   };
 
   const createNode = (label, type, path, depth) => ({
     id: (idCounter++).toString(),
     data: { label, type, path },
-    position: { x: getX(depth), y: depth * 120 }, // vertical spacing
+    position: { x: getX(depth), y: depth * 120 }, 
   });
 
   const traverse = (obj, parentId = null, path = "$", depth = 0) => {
