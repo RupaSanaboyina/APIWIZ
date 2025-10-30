@@ -1,0 +1,359 @@
+:root{
+  --bg: #f3f4f6;
+  --card: #ffffff;
+  --text: #0f172a;
+  --muted: #6b7280;
+  --accent: #3b82f6;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  background-color: #f9fafb;
+  color: #111;
+}
+
+.app {
+  min-height: 100vh;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  color: var(--text);
+  transition: background .25s, color .25s;
+  box-sizing: border-box;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+.app.dark {
+  --bg: #0f172a;
+  --card: #0b1220;
+  --text: #e6eef8;
+  --muted: #9aa6bf;
+  --accent: #60a5fa;
+}
+
+.card {
+  width: 95%;
+  max-width: 1100px;
+  background: var(--card);
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(2,6,23,0.08);
+  padding: 22px;
+  box-sizing: border-box;
+  color: var(--text);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.card-header h1{
+  margin: 0;
+  font-size: 1.4rem;
+  letter-spacing: -0.2px;
+}
+
+.card-body {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+/* Left (input) */
+.left-panel {
+  flex: 0.9;
+  min-width: 340px;
+}
+
+.json-input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: rgba(0,0,0,0.03);
+  padding: 14px;
+  border-radius: 8px;
+}
+
+.json-textarea {
+  width: 100%;
+  min-height: 320px;
+  resize: vertical;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(15,23,42,0.06);
+  background: transparent;
+  color: inherit;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 13px;
+  box-sizing: border-box;
+}
+
+/* Right (tree) */
+.right-panel {
+  flex: 1.3;
+  display: flex;
+  flex-direction: column;
+  min-width: 420px;
+}
+
+.search-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.search-bar {
+  flex: 1;
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(15,23,42,0.06);
+  background: transparent;
+  color: inherit;
+  box-sizing: border-box;
+}
+
+button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  background-color: #3b82f6;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #2563eb;
+}
+
+.message {
+  font-weight: 600;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+/* Tree area */
+.tree-wrapper {
+  height: 640px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(15,23,42,0.06);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+  box-sizing: border-box;
+  padding: 8px;
+}
+
+/* ensure react-flow fills area */
+.tree-container {
+  width: 100%;
+  height: 100%;
+}
+
+/* style default nodes a bit */
+.react-flow__node-default {
+  min-width: 140px;
+  padding: 8px;
+  text-align: center;
+  border-radius: 8px;
+  font-size: 13px;
+  box-shadow: 0 4px 10px rgba(2,6,23,0.04);
+}
+
+/* buttons */
+.generate-btn {
+  background: var(--accent);
+  border-radius: 8px;
+  padding: 10px 14px;
+  border: none;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Toggle switch styles */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.toggle-label {
+  font-weight: 600;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* container */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 28px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* hide native checkbox but keep it accessible */
+.switch input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* track */
+.slider {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.08);
+  border-radius: 999px;
+  transition: background 200ms ease, box-shadow 200ms ease;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+/* knob */
+.slider:before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  width: 22px;
+  height: 22px;
+  background: #ffffff;
+  border-radius: 50%;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+  box-shadow: 0 4px 10px rgba(2, 6, 23, 0.08);
+}
+
+/* checked state */
+.switch input:checked + .slider {
+  background: var(--accent);
+}
+
+.switch input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+/* keyboard / focus visible */
+.switch input:focus + .slider {
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.12);
+}
+
+/* optional small variant */
+.switch.small {
+  width: 40px;
+  height: 22px;
+}
+
+.switch.small .slider:before {
+  width: 18px;
+  height: 18px;
+  left: 2px;
+  top: 2px;
+}
+
+.switch.small input:checked + .slider:before {
+  transform: translateX(18px);
+}
+
+/* dark theme tweaks */
+.app.dark .slider {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.app.dark .switch input:checked + .slider {
+  background: var(--accent);
+}
+
+/* tooltip for node hover */
+.node-tooltip-inner {
+  background: rgba(0, 6, 23, 0.9);
+  color: #fff;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  min-width: 160px;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.28);
+}
+.node-tooltip .tt-label {
+  font-weight: 600;
+  font-size: 12px;
+  opacity: 0.95;
+  margin-bottom: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.node-tooltip .tt-value {
+  font-size: 12px;
+  opacity: 0.9;
+  color: rgba(255,255,255,0.9);
+  max-height: 36px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* responsiveness */
+@media (max-width: 980px) {
+  .card {
+    padding: 16px;
+  }
+  .card-body {
+    flex-direction: column;
+  }
+  .left-panel,
+  .right-panel {
+    min-width: 0;
+    width: 100%;
+  }
+  .json-textarea {
+    min-height: 240px;
+  }
+  .tree-wrapper {
+    height: 520px;
+  }
+  .search-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  .search-bar {
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 520px) {
+  .card {
+    padding: 12px;
+  }
+  .card-header h1 {
+    font-size: 1.1rem;
+  }
+  .json-textarea {
+    min-height: 180px;
+    font-size: 13px;
+  }
+  .tree-wrapper {
+    height: 420px;
+    padding: 6px;
+  }
+  .generate-btn, button {
+    width: 100%;
+    padding: 10px;
+  }
+}
+
