@@ -24,7 +24,7 @@ function App() {
       setEdges(edges);
       setMessage("");
     } catch (err) {
-      setMessage("❌ Invalid JSON.");
+      setMessage("Invalid JSON.");
     }
   };
 
@@ -37,7 +37,7 @@ function App() {
       setMessage("✅ Match found!");
     } else {
       setHighlightNode(null);
-      setMessage("❌ No match found!");
+      setMessage(" No match found!");
     }
   };
 
@@ -73,7 +73,7 @@ function App() {
       setMessage("✅ Image downloaded");
       setTimeout(() => setMessage(""), 1800);
     } catch (err) {
-      setMessage("❌ Failed to download image. Install html2canvas: npm i html2canvas");
+      setMessage("Failed to download image. Install html2canvas: npm i html2canvas");
       setTimeout(() => setMessage(""), 2800);
     }
   };
